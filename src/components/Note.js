@@ -1,12 +1,24 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 
+const formatDate = ms => {
+  const date = new Date(ms);
+  const day = date.getDate();
+  const month = date.getMonth() + 1;
+  const year = date.getFullYear();
+  const hrs = date.getHours();
+  const min = date.getMinutes();
+  const sec = date.getSeconds();
+
+  return `${day}/${month}/${year}`;
+};
 const Note = ({ item, onPress }) => {
-    const {Head, Comment} = item
+    const {Head, Comment, time} = item
   return (
     <TouchableOpacity onPress={onPress} style={styles.container}>
       <Text numberOfLines={2}style={styles.Head}>{Head}</Text>
       <Text numberOfLines={3} style={styles.Comment}>{Comment}</Text>
+      <Text style={styles.time}>{`Create ${formatDate(time)}`}</Text>
     </TouchableOpacity>
   )
 }
@@ -28,5 +40,9 @@ const styles = StyleSheet.create({
     },
     Comment:{
         opacity: 0.4
+    },
+    time:{
+      opacity: 0.4,
+      alignSelf: 'flex-end'
     }
 })

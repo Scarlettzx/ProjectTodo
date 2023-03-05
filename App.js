@@ -1,25 +1,21 @@
 import React from "react";
 import { View, Text, StatusBar, StyleSheet } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import Splash from "./src/screens/Splash";
 import Onboarding from "./src/screens/Onboarding";
 import Letyouin from "./src/screens/Letyouin";
 import Signup from "./src/screens/Signup";
 import Signin from "./src/screens/Signin";
-import HomeScreen from "./src/screens/HomeScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Bottomtab from "./src/screens/Bottomtab";
 import NoteDetail from "./src/components/NoteDetail";
-
+import NoteProvider from "./src/contexts/NoteProvider";
 const Stack = createNativeStackNavigator();
-{
-  /* <Bottomtab/>  */
-}
 const App = () => {
-  const [isLoading, setisLoading] = React.useState(true);
-  const [userToken, setUserToken] = React.useState(null);
   return (
     <NavigationContainer>
+      <NoteProvider>
       <Stack.Navigator
         screenOptions={{
           headerShown: false,
@@ -38,6 +34,7 @@ const App = () => {
         <Stack.Screen name="Bottomtab" component={Bottomtab} />
         <Stack.Screen name="NoteDetail" component={NoteDetail}/>
       </Stack.Navigator>
+      </NoteProvider>
     </NavigationContainer>
   );
 };

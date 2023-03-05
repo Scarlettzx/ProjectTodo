@@ -11,30 +11,44 @@ import {
 import { AntDesign } from "@expo/vector-icons";
 import React, { useState } from "react";
 
-const NoteInputModal = ({ visible, onClose, onSubmit }) => {
+const NoteInputModal = ({ visible, onClose, onSubmit, note, isEdit}) => {
   const [Head, setHead] = useState("");
   const [Comment, setComment] = useState("");
   const handleClose = () => {
     Keyboard.dismiss();
   };
+  React.useEffect(()=>{
+    if(isEdit){
+      setHead(note.Head)
+      setComment(note.Comment)
+    }
+  },[isEdit])
   const handleonChangeText = (text, value) => {
     if (value === "Head") setHead(text);
     if (value === "Comment") setComment(text);
   };
   const handlesubmit = () => {
     if (!Head.trim() && !Comment.trim()) return onClose();
-    onSubmit(Head, Comment);
-    setHead("");
-    setComment("");
-    onClose();
+    if(isEdit){
+      // ! for edit
+      onSubmit(Head,Comment, Date.now())
+    }else{
+      onSubmit(Head,Comment)
+      setHead('')
+      setComment('')
+    }
+    onClose()
   };
 
   const closeModal = () => {
-    setHead("");
-    setComment("");
-    onClose();
+    if(!isEdit){
+      setHead("");
+      setComment("");
+    }else{
+      onClose();
+    }
   };
-  //   console.log(Head, Comment);
+    console.log(Head, Comment);
   return (
     <>
       <StatusBar

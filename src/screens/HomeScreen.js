@@ -14,22 +14,15 @@ import React from "react";
 import { useFonts } from "expo-font";
 import NoteDetails from "../components/NoteInputModal";
 import Note from "../components/Note";
+import { useNotes } from '../contexts/NoteProvider';
 // import { Modal ,Pressable } from "react-native";
 
 const HomeScreen = ({ navigation }) => {
   const [visible, setVisible] = React.useState(false);
   const [userDetails, setUserDetails] = React.useState();
-  const [notes, setNotes] = React.useState([]);
-
-  const findNotes = async () => {
-    const result = await AsyncStorage.getItem("notes");
-    console.log(result);
-    if (result !== null) setNotes(JSON.parse(result));
-  };
-
+  const { notes, setNotes, findNotes } = useNotes();
   React.useEffect(() => {
     getUserData();
-    findNotes();
   }, []);
   const getUserData = async () => {
     const userData = await AsyncStorage.getItem("userData");
@@ -128,6 +121,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     left: 320,
     bottom: 20,
+    zIndex: 1
   },
   emptyHeaderContainer: {
     flex: 1,
