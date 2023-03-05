@@ -1,14 +1,67 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React, { Component } from 'react';
+import {
+  StyleSheet,
+  Text,
+  View
+} from 'react-native';
+import CalendarPicker from 'react-native-calendar-picker';
 
-const CalendarScreen = () => {
-  return (
-    <View>
-      <Text>CalendarScreen</Text>
-    </View>
-  )
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedStartDate: null,
+      selectedEndDate: null,
+    };
+    this.onDateChange = this.onDateChange.bind(this);
+  }
+
+  onDateChange(date, type) {
+    if (type === 'END_DATE') {
+      this.setState({
+        selectedEndDate: date,
+      });
+    } else {
+      this.setState({
+        selectedStartDate: date,
+        selectedEndDate: null,
+      });
+    }
+  }
+
+  render() {
+    const { selectedStartDate, selectedEndDate } = this.state;
+    const minDate = new Date(); // Today
+    const maxDate = new Date(2023, 12, 31);
+    const startDate  =  selectedStartDate ? selectedStartDate.toString() : '';
+    const endDate = selectedEndDate ? selectedEndDate.toString() : '';
+
+    return (
+      <View style={styles.container}>
+        <CalendarPicker
+          startFromMonday={true}
+          allowRangeSelection={true}
+          minDate={minDate}
+          maxDate={maxDate}
+          todayBackgroundColor="#FF4F74"
+          selectedDayColor="#FF4F74"
+          selectedDayTextColor="#FFFFFF"
+          onDateChange={this.onDateChange}
+        />
+
+        <View>
+          <Text>SELECTED START DATE:{ startDate }</Text>
+          <Text>SELECTED END DATE:{ endDate }</Text>
+        </View>
+      </View>
+    );
+  }
 }
 
-export default CalendarScreen
-
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#FFFFFF',
+    marginTop: 10,
+  },
+});

@@ -5,6 +5,7 @@ import {
   View,
   ImageBackground,
   TouchableOpacity,
+  Image
 } from "react-native";
 import React from "react";
 import { StatusBar } from "react-native";
@@ -119,5 +120,9 @@ const styles = StyleSheet.create({
     fontFamily: "AKAsara",
     fontSize: 14,
     color: 'rgba(218, 214, 214, 0.7)'
+  },
+  Icon:{
+    width: 20,
+    height: 20
   }
 });

@@ -6,12 +6,62 @@ import Onboarding from "./src/screens/Onboarding";
 import Letyouin from "./src/screens/Letyouin";
 import Signup from "./src/screens/Signup";
 import Signin from "./src/screens/Signin";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Bottomtab from "./src/screens/Bottomtab";
+import CustomDrawer from "./src/components/CustomDrawer";
 import NoteDetail from "./src/components/NoteDetail";
 import NoteProvider from "./src/contexts/NoteProvider";
+import IndexScreen from "./src/screens/IndexScreen";
+import Ionic from 'react-native-vector-icons/Ionicons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons'; 
+import CategoryScreen from "./src/screens/CategoryScreen";
 const Stack = createNativeStackNavigator();
+const Drawer = createDrawerNavigator();
+
+function MyDrawer() {
+  return(
+    <Drawer.Navigator 
+    useLegacyImplementation={true}
+    drawerContent={props => <CustomDrawer {...props}/>}
+    screenOptions={{
+      headerTitle: '',
+      headerShown: true,
+      headerStyle:{
+        backgroundColor: 'rgba(247, 82, 116, 1)',
+        elevation: 0,
+        shadowOpacity: 0,
+      },
+      drawerActiveBackgroundColor: '#FF4F74',
+      drawerActiveTintColor: "#fff",
+      drawerInactiveTintColor: "#FFF",
+      drawerLabelStyle:{
+          marginLeft:-25,
+          fontSize: 15,
+        },
+    }}>
+      <Drawer.Screen name="Home " component={Bottomtab} 
+        options={{drawerIcon: ({color}) => (
+          <Ionic name="home" size={22} color={color} />
+        )
+        }}/>
+      <Drawer.Screen name="Index" component={IndexScreen}
+        options={{drawerIcon: ({color}) => (
+          <MaterialCommunityIcons name="mailbox" size={24} color={color} />
+        )
+        }}
+      />
+      <Drawer.Screen name="Category" component={CategoryScreen} 
+        options={{drawerIcon: ({color}) => (
+          <MaterialIcons name="category" size={24} color={color} />
+        )
+        }}
+      />
+    </Drawer.Navigator>
+  )
+}
 const App = () => {
   return (
     <NavigationContainer>
@@ -31,7 +81,7 @@ const App = () => {
         <Stack.Screen name="Letyouin" component={Letyouin} />
         <Stack.Screen name="Signup" component={Signup} />
         <Stack.Screen name="Signin" component={Signin} />
-        <Stack.Screen name="Bottomtab" component={Bottomtab} />
+        <Stack.Screen name="Bottomtab" component={MyDrawer} />
         <Stack.Screen name="NoteDetail" component={NoteDetail}/>
       </Stack.Navigator>
       </NoteProvider>

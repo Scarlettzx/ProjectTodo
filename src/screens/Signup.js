@@ -176,6 +176,12 @@ const Signup = ({ navigation }) => {
         >
           <Text style={styles.Tsignup}>Sign Up</Text>
         </TouchableOpacity>
+        <View style={{flexDirection:'row', marginVertical: 20}}>
+          <Text style={{color: "#6D798E", fontSize: 14,fontFamily: 'BRegular', fontWeight: '400'}}>Already have an account?  </Text>
+          <TouchableOpacity onPress={() => navigation.navigate('Signin')}>
+          <Text style={{color: '#5082D2', fontSize: 16,fontFamily: 'BRegular', fontWeight: 'bold'}}> Sign in</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );
