@@ -18,7 +18,7 @@ const Note = ({ item, onPress }) => {
     <TouchableOpacity onPress={onPress} style={styles.container}>
       <Text numberOfLines={2}style={styles.Head}>{Head}</Text>
       <Text numberOfLines={3} style={styles.Comment}>{Comment}</Text>
-      <Text style={styles.time}>{`Create ${formatDate(time)}`}</Text>
+      <Text style={styles.time}>{formatDate(time)}</Text>
     </TouchableOpacity>
   )
 }
