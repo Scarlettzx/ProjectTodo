@@ -43,7 +43,7 @@ const Signin = ({ navigation },DataNew) => {
         navigation.navigate('Bottomtab');
         AsyncStorage.setItem(
           'userData',
-          JSON.stringify({...userData}),
+          JSON.stringify({...userData, loggedIn: true}),
         );
       } else{
         Alert.alert('Error','SignIn fail Please Try Again')

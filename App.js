@@ -9,6 +9,7 @@ import HomeScreen from "./src/screens/HomeScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Bottomtab from "./src/screens/Bottomtab";
+import NoteDetail from "./src/components/NoteDetail";
 
 const Stack = createNativeStackNavigator();
 {
@@ -35,6 +36,7 @@ const App = () => {
         <Stack.Screen name="Signup" component={Signup} />
         <Stack.Screen name="Signin" component={Signin} />
         <Stack.Screen name="Bottomtab" component={Bottomtab} />
+        <Stack.Screen name="NoteDetail" component={NoteDetail}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
