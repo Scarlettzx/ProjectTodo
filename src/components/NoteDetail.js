@@ -38,7 +38,7 @@ const NoteDetail = (props) => {
   const Alertdelete = () => {
     Alert.alert(
       "Are You Sure!",
-      "This action will delete your note permanently!",
+      "This action will delete your note",
       [
         {
           text: "Delete",

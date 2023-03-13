@@ -41,16 +41,6 @@ const CustomDrawer = (props) => {
             </View>    
         </DrawerContentScrollView>
             <View style={{padding:20, borderTopWidth:15, borderTopColor:"#FF4F74"}}>
-                <TouchableOpacity style={{paddingVertical:15}}>
-                    <View style={{flexDirection: 'row', alignItems:'center'}}>
-                        <AntDesign name="sharealt" size={22} color="#FFF" />
-                        <Text style={{
-                            color: '#FFFF',
-                            fontSize:15,
-                            marginLeft: 5,
-                            }}>About me</Text>
-                    </View>
-                </TouchableOpacity>
                 <TouchableOpacity style={{paddingVertical:15}} onPress={logout}>
                     <View style={{flexDirection: 'row', alignItems:'center'}}>
                         <FontAwesome name="sign-out" size={24} color="#FFFF" />

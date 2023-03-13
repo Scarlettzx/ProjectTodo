@@ -6,6 +6,7 @@ import Onboarding from "./src/screens/Onboarding";
 import Letyouin from "./src/screens/Letyouin";
 import Signup from "./src/screens/Signup";
 import Signin from "./src/screens/Signin";
+import { AntDesign } from '@expo/vector-icons';
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -18,6 +19,7 @@ import Ionic from 'react-native-vector-icons/Ionicons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons'; 
 import CategoryScreen from "./src/screens/CategoryScreen";
+import Aboutme from "./src/screens/Aboutme";
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
@@ -56,6 +58,12 @@ function MyDrawer() {
       <Drawer.Screen name="Category" component={CategoryScreen} 
         options={{drawerIcon: ({color}) => (
           <MaterialIcons name="category" size={24} color={color} />
+        )
+        }}
+      />
+      <Drawer.Screen name="Aboutme" component={Aboutme} 
+        options={{drawerIcon: ({color}) => (
+          <AntDesign name="sharealt" size={24} color={color} />
         )
         }}
       />
