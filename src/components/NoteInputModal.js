@@ -104,6 +104,8 @@ const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 20,
     paddingTop: 15,
+    flex:1,
+    justifyContent:'center',
   },
   input: {
     borderBottomWidth: 2,
@@ -122,7 +124,7 @@ const styles = StyleSheet.create({
   modalBG: {
     flex: 1,
     zIndex: -1,
-    // backgroundColor: 'lime'
+    // backgroundColor: 'lime',
   },
   Icon: {
     borderRadius: 50,

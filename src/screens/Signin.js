@@ -145,7 +145,7 @@ const Signin = ({ navigation },DataNew) => {
           style={styles.Bsignup}
           onPress={handleSubmit(SignInPressed)}
         >
-          <Text style={styles.Tsignup}>Sign Up</Text>
+          <Text style={styles.Tsignup}>Sign In</Text>
         </TouchableOpacity>
         <View style={{flexDirection:'row', marginVertical: 20}}>
           <Text style={{color: "#6D798E", fontSize: 14,fontFamily: 'BRegular', fontWeight: '400'}}>Don’t have an account?</Text>
